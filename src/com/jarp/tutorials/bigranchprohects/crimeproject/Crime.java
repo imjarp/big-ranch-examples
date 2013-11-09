@@ -3,6 +3,7 @@
  */
 package com.jarp.tutorials.bigranchprohects.crimeproject;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -13,15 +14,18 @@ public class Crime {
 	
 	private UUID mId;
 	
+	public UUID getmId() {
+		return mId;
+	}
+
 	private String mTitle;
+	
+	
 	
 	public Crime()
 	{
 		this.mId = UUID.randomUUID();
-	}
 	
-	public UUID getmId() {
-		return mId;
 	}
 	
 
@@ -32,10 +36,5 @@ public class Crime {
 	public void setmTitle(String mTitle) {
 		this.mTitle = mTitle;
 	}
-
 	
-	
-	
-	
-
 }

@@ -23,6 +23,18 @@
             </intent-filter>
         </activity>
         
+        
+              <activity
+            android:name="com.jarp.tutorials.bigranchprohects.ch12.CrimeListActivity"
+            android:label="@string/app_name" >
+            </activity>
+        
+        
+        <activity
+            android:name="com.jarp.tutorials.bigranchprohects.ch12.CrimePagerActivity"
+            android:label="@string/app_name" >
+            </activity>
+        
         <activity
             android:name="com.jarp.tutorials.bigranchprohects.ch11.CrimeListActivity"
             android:label="@string/app_name" >

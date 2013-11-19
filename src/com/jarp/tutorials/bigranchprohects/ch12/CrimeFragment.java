@@ -117,7 +117,7 @@ public class CrimeFragment extends Fragment {
 				// TODO Auto-generated method stub
 			FragmentManager fm = getActivity().getSupportFragmentManager();
 			
-			DatePickerFragment dateFragment = new DatePickerFragment();
+			DatePickerFragment dateFragment = DatePickerFragment.newInstance(mCrime.getDate());
 			
 			dateFragment.show(fm, TAG_DIALOG_DATE);
 			

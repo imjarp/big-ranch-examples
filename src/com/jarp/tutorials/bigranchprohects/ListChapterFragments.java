@@ -56,6 +56,12 @@ public class ListChapterFragments extends ListFragment {
 			i = new Intent(getActivity(), com.jarp.tutorials.bigranchprohects.ch12.CrimeListActivity.class);
 			break;
 
+			
+		case 6:
+			//Chapter 13
+			i = new Intent(getActivity(), com.jarp.tutorials.bigranchprohects.ch13.HelloMoonActivity.class);
+			break;
+
 		default:
 			break;
 		}
@@ -74,7 +80,7 @@ public class ListChapterFragments extends ListFragment {
 		
 		
 		
-		String[] objects = new String []{"Chapter 7 ", "Chapter 8 ", "Chapter 9", "Chapter 10 ", "Chapter 11","Chapter 12"} ;
+		String[] objects = new String []{"Chapter 7 ", "Chapter 8 ", "Chapter 9", "Chapter 10 ", "Chapter 11","Chapter 12","Chapter 13"} ;
 		
 		ArrayAdapter<String> chapterAdapter = new ArrayAdapter<String>(getActivity(), R.layout.simple_list_item_1, objects);
 		

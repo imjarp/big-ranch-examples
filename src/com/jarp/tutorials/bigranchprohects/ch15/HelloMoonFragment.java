@@ -1,4 +1,4 @@
-package com.jarp.tutorials.bigranchprohects.ch13;
+package com.jarp.tutorials.bigranchprohects.ch15;
 
 
 import android.os.Bundle;
@@ -16,6 +16,8 @@ public class HelloMoonFragment extends Fragment {
 	
 	
 
+	
+
 	private Button btnPlay;
 	
 	private Button btnPause;
@@ -26,7 +28,7 @@ public class HelloMoonFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		View v = inflater.inflate(R.layout.ch13_fragment_hellomoon, null) ;
+		View v = inflater.inflate(R.layout.ch15_fragment_hellomoon, null) ;
 		
 		btnPlay = (Button)v.findViewById(R.id.button_hellomoon_play);
 		
@@ -60,7 +62,7 @@ public class HelloMoonFragment extends Fragment {
 	
 	@Override
 	public void onStop() {
-		// TODO Auto-generated method stub
+	
 		super.onStop();
 		
 		mPAudioPlayer.stop();
@@ -68,6 +70,15 @@ public class HelloMoonFragment extends Fragment {
 		
 	}
 
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		
+		super.onCreate(savedInstanceState);
+		
+		setRetainInstance(true);
+		
+	}
 	
 
 }

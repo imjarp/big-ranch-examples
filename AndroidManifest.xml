@@ -25,6 +25,16 @@
         
         
         <activity
+            android:name="com.jarp.tutorials.bigranchprohects.ch15.HelloMoonActivity"
+            android:label="@string/app_name" >
+            </activity>
+        
+        <activity
+            android:name="com.jarp.tutorials.bigranchprohects.ch14.HelloMoonActivity"
+            android:label="@string/app_name" >
+            </activity>
+        
+        <activity
             android:name="com.jarp.tutorials.bigranchprohects.ch13.HelloMoonActivity"
             android:label="@string/app_name" >
             </activity>

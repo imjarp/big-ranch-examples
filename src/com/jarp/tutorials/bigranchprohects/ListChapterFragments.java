@@ -7,6 +7,9 @@ import android.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -16,6 +19,10 @@ import android.widget.ListView;
  *
  */
 public class ListChapterFragments extends ListFragment {
+
+	
+
+	
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
@@ -69,8 +76,13 @@ public class ListChapterFragments extends ListFragment {
 
 			
 		case 8:
-			//Chapter 14
+			//Chapter 15
 			i = new Intent(getActivity(), com.jarp.tutorials.bigranchprohects.ch15.HelloMoonActivity.class);
+			break;
+			
+		case 9:
+			//Chapter 16
+			i = new Intent(getActivity(), com.jarp.tutorials.bigranchprohects.ch16.CrimeListActivity.class);
 			break;
 
 		default:
@@ -87,19 +99,25 @@ public class ListChapterFragments extends ListFragment {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+		
+		
 		getActivity().setTitle("Examples by Chapter");
 		
 		
 		
 		String[] objects = new String []{"Chapter 7 ", "Chapter 8 ", "Chapter 9", 
 																"Chapter 10 ", "Chapter 11","Chapter 12",
-																"Chapter 13","Chapter 14","Chapter 15"} ;
+																"Chapter 13","Chapter 14","Chapter 15",
+																"Chapter 16"} ;
 		
 		ArrayAdapter<String> chapterAdapter = new ArrayAdapter<String>(getActivity(), R.layout.simple_list_item_1, objects);
 		
 		setListAdapter(chapterAdapter);
 		
 	}
+	
+	
+
 
 	
 

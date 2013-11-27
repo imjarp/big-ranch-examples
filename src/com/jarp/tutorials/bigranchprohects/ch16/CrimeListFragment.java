@@ -1,15 +1,19 @@
 /**
  * 
  */
-package com.jarp.tutorials.bigranchprohects.ch12;
+package com.jarp.tutorials.bigranchprohects.ch16;
 
 
 import java.util.ArrayList;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,6 +28,8 @@ import com.jarp.tutorials.bigranchprohects.R;
  *
  */
 public class CrimeListFragment extends ListFragment {
+	
+	
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -75,6 +81,7 @@ public class CrimeListFragment extends ListFragment {
 	
 	private ArrayAdapter<Crime> adapter;
 	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -90,6 +97,54 @@ public class CrimeListFragment extends ListFragment {
 		
 		setListAdapter(adapter);
 		
+		setHasOptionsMenu(true);
+		
+	}
+	
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(com.jarp.tutorials.bigranchprohects.R.menu.fragment_crime_list, menu);
+	}
+	
+	@TargetApi(11)
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		
+		switch (item.getItemId()) 
+		{
+			case R.id.menu_item_new_crime:
+				Crime c = new Crime();
+				CrimeLab.get(getActivity()).addCrime(c);
+				Intent i = new Intent(getActivity(),CrimePagerActivity.class);
+				i.putExtra(CrimeFragment.EXTRA_CRIME_ID,c.getmId());
+				startActivityForResult(i,0);
+				return true;
+				
+			case R.id.menu_item_show_subtitle:
+				if(getActivity().getActionBar().getSubtitle()==null)
+				{
+					getActivity().getActionBar().setSubtitle(R.string.show_subtitle);
+					item.setTitle(R.string.hide_subtitle);
+				}
+				else
+				{
+					getActivity().getActionBar().setSubtitle(null);
+					item.setTitle(R.string.show_subtitle);
+				}
+					
+				
+				
+				return true;
+
+			default:
+				return super.onOptionsItemSelected(item);
+				
+		}
+		
 	}
 	
 	
@@ -101,7 +156,7 @@ public class CrimeListFragment extends ListFragment {
 			
 			if(convertView ==null)
 			{
-				convertView = getActivity().getLayoutInflater().inflate(R.layout.ch16_list_item_crime , null);
+				convertView = getActivity().getLayoutInflater().inflate(R.layout.ch12_list_item_crime , null);
 			}
 			
 			

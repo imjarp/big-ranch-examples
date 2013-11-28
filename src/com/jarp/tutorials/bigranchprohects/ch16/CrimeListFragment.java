@@ -8,14 +8,18 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.AndroidRuntimeException;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -27,8 +31,44 @@ import com.jarp.tutorials.bigranchprohects.R;
  * @author JARP
  *
  */
-public class CrimeListFragment extends ListFragment {
+public class CrimeListFragment extends ListFragment  {
+
 	
+	private boolean mSubtTitleVisible;
+	private static final int REQUEST_CRIME = 1;
+	private static final String TAG = "CrimeListFragment";
+	private ArrayList<Crime> mCrimes ;
+	private ArrayAdapter<Crime> adapter;
+	
+	
+
+	@TargetApi(11)
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		 
+		View v =   inflater.inflate(R.layout.ch16_crime_list_fragment,null,false);
+		
+		ListView l = (ListView) v.findViewById(android.R.id.list);
+		
+		if(CrimeLab.get(getActivity()).getCrimes().size()==0)
+		{
+			View emptyView = v.findViewById(android.R.id.empty);
+			l.setEmptyView(emptyView);
+		}
+		
+		if(Build.VERSION.SDK_INT> Build.VERSION_CODES.HONEYCOMB)
+		{
+			if(mSubtTitleVisible)
+			{
+				getActivity().getActionBar().setSubtitle(R.string.show_subtitle);
+			}
+		}
+		
+		return v;
+	}
+
 	
 	
 	@Override
@@ -41,7 +81,7 @@ public class CrimeListFragment extends ListFragment {
 			}
 	}
 
-	private static final int REQUEST_CRIME = 1;
+	
 	
 	
 	@Override
@@ -52,7 +92,7 @@ public class CrimeListFragment extends ListFragment {
 		((CrimeAdapter) getListAdapter()).notifyDataSetChanged();
 	}
 
-	private static final String TAG = "CrimeListFragment";
+	
 	
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
@@ -77,9 +117,7 @@ public class CrimeListFragment extends ListFragment {
 		
 	}
 
-	private ArrayList<Crime> mCrimes ;
 	
-	private ArrayAdapter<Crime> adapter;
 	
 	
 	@Override
@@ -90,12 +128,19 @@ public class CrimeListFragment extends ListFragment {
 		
 		mCrimes = CrimeLab.get(getActivity()).getCrimes();
 		 
+
+		
 		//adapter = new ArrayAdapter<Crime>(getActivity(),android.R.layout.simple_list_item_1,mCrimes);
 		
 		adapter = new CrimeAdapter(mCrimes);
 		
+				
+		mSubtTitleVisible = false;
+		
+		setRetainInstance(true);
 		
 		setListAdapter(adapter);
+		
 		
 		setHasOptionsMenu(true);
 		
@@ -107,6 +152,11 @@ public class CrimeListFragment extends ListFragment {
 		
 		super.onCreateOptionsMenu(menu, inflater);
 		inflater.inflate(com.jarp.tutorials.bigranchprohects.R.menu.fragment_crime_list, menu);
+		
+		MenuItem showSubtitle = menu.findItem(R.id.menu_item_show_subtitle);
+		
+		if(showSubtitle!=null && mSubtTitleVisible)
+			showSubtitle.setTitle(R.string.hide_subtitle);
 	}
 	
 	@TargetApi(11)
@@ -128,11 +178,13 @@ public class CrimeListFragment extends ListFragment {
 				if(getActivity().getActionBar().getSubtitle()==null)
 				{
 					getActivity().getActionBar().setSubtitle(R.string.show_subtitle);
+					mSubtTitleVisible = true;
 					item.setTitle(R.string.hide_subtitle);
 				}
 				else
 				{
 					getActivity().getActionBar().setSubtitle(null);
+					mSubtTitleVisible = false;
 					item.setTitle(R.string.show_subtitle);
 				}
 					
@@ -148,15 +200,17 @@ public class CrimeListFragment extends ListFragment {
 	}
 	
 	
-	private class CrimeAdapter extends ArrayAdapter<Crime>
+	private class CrimeAdapter extends ArrayAdapter<Crime> 
 	{
+		
+		
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
 			if(convertView ==null)
 			{
-				convertView = getActivity().getLayoutInflater().inflate(R.layout.ch12_list_item_crime , null);
+				convertView = getActivity().getLayoutInflater().inflate(R.layout.ch16_list_item_crime , null);
 			}
 			
 			

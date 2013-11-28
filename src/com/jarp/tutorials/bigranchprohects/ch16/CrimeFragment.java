@@ -60,7 +60,7 @@ public class CrimeFragment extends Fragment {
 	private static final int REQUEST_DATE = 0;
 	private static final int REQUEST_TIME = 1;
 
-	private boolean mSubtTitleVisible;
+
 	
 
 	@Override
@@ -108,7 +108,9 @@ public class CrimeFragment extends Fragment {
 		
 		mCrime = CrimeLab.get(getActivity()).getCrime(uuid);
 		
-		setRetainInstance(true);
+		
+		
+		
 		
 		setHasOptionsMenu(true);
 		

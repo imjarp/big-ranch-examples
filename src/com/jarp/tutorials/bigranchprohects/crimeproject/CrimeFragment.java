@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.jarp.tutorials.bigranchprohects.crimeproject;
 
 import com.jarp.tutorials.bigranchprohects.R;

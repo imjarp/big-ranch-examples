@@ -66,12 +66,16 @@ public class CrimeListFragment extends ListFragment  {
 			l.setEmptyView(emptyView);
 		}
 		
-		if(Build.VERSION.SDK_INT> Build.VERSION_CODES.HONEYCOMB)
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
 		{
 			if(mSubtTitleVisible)
 			{
 				getActivity().getActionBar().setSubtitle(R.string.show_subtitle);
 			}
+		
+		}
+		if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
+		{
 			registerForContextMenu(l);
 		}
 		else
@@ -318,7 +322,8 @@ public class CrimeListFragment extends ListFragment  {
 		}
 
 		public CrimeAdapter(ArrayList<Crime> Crimes) {
-			super(getActivity(),0,Crimes);
+			//super(getActivity(),0,Crimes);
+            super(getActivity(), android.R.layout.simple_list_item_1, Crimes);
 			// TODO Auto-generated constructor stub
 		}
 		

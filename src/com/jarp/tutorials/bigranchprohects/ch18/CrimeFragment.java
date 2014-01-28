@@ -18,10 +18,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -111,10 +116,6 @@ public class CrimeFragment extends Fragment {
 		
 		mCrime = CrimeLab.get(getActivity()).getCrime(uuid);
 		
-		
-		
-		
-		
 		setHasOptionsMenu(true);
 		
 		
@@ -134,6 +135,60 @@ public class CrimeFragment extends Fragment {
 			{
 				getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 			}
+		}
+		
+		if(Build.VERSION.SDK_INT<Build.VERSION_CODES.HONEYCOMB)
+		{
+			registerForContextMenu(v);
+		}
+		else
+		{
+			v.setOnLongClickListener(new OnLongClickListener() {
+				
+				@Override
+				public boolean onLongClick(View v) {
+					// TODO Auto-generated method stub
+					getActivity().startActionMode(new Callback() {
+						
+						@Override
+						public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+							// TODO Auto-generated method stub
+							return false;
+						}
+						
+						@Override
+						public void onDestroyActionMode(ActionMode mode) {
+							// TODO Auto-generated method stub
+							
+						}
+						
+						@Override
+						public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+							MenuInflater inflater = mode.getMenuInflater();
+							inflater.inflate(R.menu.crime_list_item_context,menu);							
+							return true;
+						}
+						
+						@Override
+						public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+							// TODO Auto-generated method stub
+							switch (item.getItemId()) {
+							case R.id.menu_item_delete_crime:
+								UUID uuid = (UUID) getArguments().getSerializable(EXTRA_CRIME_ID);
+								mCrime = CrimeLab.get(getActivity()).getCrime(uuid);
+								CrimeLab.get(getActivity()).deleteCrime(mCrime);
+								mode.finish();
+								if(NavUtils.getParentActivityIntent(getActivity())!=null)
+									NavUtils.navigateUpFromSameTask(getActivity());
+								return true;
+							}
+							return false;
+						}
+					});
+					return true;
+				}
+			});
+		
 		}
 		
 		mTitleField = (EditText)v.findViewById(R.id.crime_title);

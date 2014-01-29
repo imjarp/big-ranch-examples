@@ -25,6 +25,19 @@
             </intent-filter>
         </activity>
         
+        <activity
+	            android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimeListActivity"
+	            android:label="@string/app_name" >
+            	
+                
+            </activity>
+            
+        <activity android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimePagerActivity"
+	            		  android:label="@string/app_name">
+            		<meta-data android:name="android.support.PARENT_ACTIVITY"
+                    	   android:value="com.jarp.tutorials.bigranchprohects.ch19.CrimeListActivity"/>
+            </activity>
+        
         
         <activity
 	            android:name="com.jarp.tutorials.bigranchprohects.ch18.CrimeListActivity"

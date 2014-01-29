@@ -22,6 +22,7 @@
 	<string name="subtitle">If you see something, say something.</string>
 	<string name="delete_crime">Delete</string>
 	<string name="empty_crime_list">The list is empty there is no crime, try adding some crime</string>
+	<string name="take">Take Picture</string>
 
 
 </resources>

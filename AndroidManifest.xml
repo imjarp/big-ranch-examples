@@ -6,15 +6,17 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="16" />
     
      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+     <uses-permission android:name="android.permission.CAMERA"/>
+     <uses-feature android:name="android.hardware.camera"/>
+     
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Sherlock.Light" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.jarp.tutorials.bigranchprohects.MainActivity"
             android:label="@string/app_name" >
@@ -28,9 +30,13 @@
         <activity
 	            android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimeListActivity"
 	            android:label="@string/app_name" >
-            	
-                
-            </activity>
+        </activity>
+            
+        <activity
+	            android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimeCameraActivity"
+	            android:screenOrientation="landscape"
+	            android:label="@string/app_name" >
+        </activity>
             
         <activity android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimePagerActivity"
 	            		  android:label="@string/app_name">

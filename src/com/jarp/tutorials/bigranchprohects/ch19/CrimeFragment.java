@@ -4,13 +4,13 @@
 package com.jarp.tutorials.bigranchprohects.ch19;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
@@ -42,16 +43,13 @@ import com.jarp.tutorials.bigranchprohects.R;
  */
 public class CrimeFragment extends Fragment {
 	
-	
-
-	
-
-
 	private Crime mCrime;
 	private CheckBox mSolvedCheckbox;
 	private Button mDateButton;
 	private EditText mTitleField;
 	private Button mTimeButton;
+	private ImageButton mPhotoButton;
+	
 	
 	
 	public static final String EXTRA_CRIME_ID ="EXTRA_CRIME_ID";
@@ -195,7 +193,22 @@ public class CrimeFragment extends Fragment {
 		
 		mTitleField.setText(mCrime.getmTitle());
 		
+		mPhotoButton = (ImageButton) v.findViewById(R.id.crime_imageButton);
 		
+		mPhotoButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(getActivity(),CrimeCameraActivity.class);
+				startActivity(i);
+				}
+		});
+		
+		PackageManager pm = getActivity().getPackageManager();
+		
+		if(!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)&& !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT))
+			mPhotoButton.setEnabled(false);
+			
 		
 		mTitleField.addTextChangedListener( new TextWatcher() {
 			

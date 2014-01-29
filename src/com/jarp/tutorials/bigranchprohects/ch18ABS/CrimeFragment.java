@@ -19,7 +19,7 @@ import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ActionMode;
-import android.view.ActionMode.Callback;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +35,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.ActionMode.Callback;
 import com.jarp.tutorials.bigranchprohects.R;
 
 /**
@@ -138,48 +139,43 @@ public class CrimeFragment extends SherlockFragment {
 		if(Build.VERSION.SDK_INT<Build.VERSION_CODES.HONEYCOMB)
 		{
 			registerForContextMenu(v);
-		}
-		else
-		{
+		//}
+		//else
+		//{
+			
 			v.setOnLongClickListener(new OnLongClickListener() {
 				
 				@Override
 				public boolean onLongClick(View v) {
-					// TODO Auto-generated method stub
-					getActivity().startActionMode(new Callback() {
+					getSherlockActivity().startActionMode(new Callback() {
 						
 						@Override
-						public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+						public boolean onPrepareActionMode(
+								com.actionbarsherlock.view.ActionMode mode,
+								com.actionbarsherlock.view.Menu menu) {
 							// TODO Auto-generated method stub
 							return false;
 						}
 						
 						@Override
-						public void onDestroyActionMode(ActionMode mode) {
+						public void onDestroyActionMode(com.actionbarsherlock.view.ActionMode mode) {
 							// TODO Auto-generated method stub
 							
 						}
 						
 						@Override
-						public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-							MenuInflater inflater = mode.getMenuInflater();
-							inflater.inflate(R.menu.crime_list_item_context,menu);							
-							return true;
+						public boolean onCreateActionMode(
+								com.actionbarsherlock.view.ActionMode mode,
+								com.actionbarsherlock.view.Menu menu) {
+							// TODO Auto-generated method stub
+							return false;
 						}
 						
 						@Override
-						public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+						public boolean onActionItemClicked(
+								com.actionbarsherlock.view.ActionMode mode,
+								com.actionbarsherlock.view.MenuItem item) {
 							// TODO Auto-generated method stub
-							switch (item.getItemId()) {
-							case R.id.menu_item_delete_crime:
-								UUID uuid = (UUID) getArguments().getSerializable(EXTRA_CRIME_ID);
-								mCrime = CrimeLab.get(getActivity()).getCrime(uuid);
-								CrimeLab.get(getActivity()).deleteCrime(mCrime);
-								mode.finish();
-								if(NavUtils.getParentActivityIntent(getActivity())!=null)
-									NavUtils.navigateUpFromSameTask(getActivity());
-								return true;
-							}
 							return false;
 						}
 					});

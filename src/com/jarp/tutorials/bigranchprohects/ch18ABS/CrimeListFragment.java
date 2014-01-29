@@ -27,6 +27,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.view.ActionMode.Callback;
 import com.jarp.tutorials.bigranchprohects.R;
 
 /**
@@ -75,6 +76,8 @@ public class CrimeListFragment extends SherlockListFragment  {
 		if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
 		{
 			registerForContextMenu(l);
+			l.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+			
 		}
 		else
 		{

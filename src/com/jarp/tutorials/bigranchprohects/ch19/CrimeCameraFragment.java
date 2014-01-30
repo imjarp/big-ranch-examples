@@ -38,7 +38,7 @@ public class CrimeCameraFragment extends Fragment {
 	@SuppressWarnings("deprecation")
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent ,Bundle savedInstance)
 	{
-		View v = inflater.inflate(R.layout.ch19_activity_fragment, parent, false);
+		View v = inflater.inflate(R.layout.ch19_fragment_crime_camera, parent, false);
 		
 		Button takePictureButton = (Button)v.findViewById(R.id.crime_camera_takePictureButton);
 		takePictureButton.setOnClickListener(new OnClickListener() {

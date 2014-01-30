@@ -8,6 +8,8 @@ import java.util.List;
 
 import android.annotation.TargetApi;
 import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+import android.hardware.Camera.ShutterCallback;
 import android.hardware.Camera.Size;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,6 +36,25 @@ public class CrimeCameraFragment extends Fragment {
 	private Camera mCamera;
 	private SurfaceView mSurfaceView;
 	private View mContainer ;
+	
+	private Camera.ShutterCallback mShutterCallback = new ShutterCallback() {
+		
+		@Override
+		public void onShutter() {
+			mContainer.setVisibility(View.VISIBLE);
+			
+		}
+	};
+	
+	
+	private Camera.PictureCallback mPictureCallback = new PictureCallback() {
+		
+		@Override
+		public void onPictureTaken(byte[] data, Camera camera) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 	
 	@Override
 	@SuppressWarnings("deprecation")
@@ -164,9 +185,6 @@ public class CrimeCameraFragment extends Fragment {
 		return bestSize;
 	}
 
-	public final void takePicture (Camera.ShutterCallback shutter,Camera.PictureCallback raw,Camera.PictureCallback jpeg)
-	{
-		
-	}
+
 	
 }

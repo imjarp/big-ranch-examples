@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 /**
  * @author JARP
- *
+ *	
  */
 public class CrimeCameraActivity extends SingleFragmentActivity {
 

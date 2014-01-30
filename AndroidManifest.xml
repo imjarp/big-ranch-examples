@@ -27,6 +27,34 @@
             </intent-filter>
         </activity>
         
+        
+        <activity
+	            android:name="com.jarp.tutorials.bigranchprohects.ch20.CrimeListActivity"
+	            android:label="@string/app_name" >
+        </activity>
+            
+        <activity
+	            android:name="com.jarp.tutorials.bigranchprohects.ch20.CrimeCameraActivity"
+	            android:exported="true"
+	            android:screenOrientation="landscape"
+	            android:label="@string/app_name" >
+        </activity>
+            
+        <activity android:name="com.jarp.tutorials.bigranchprohects.ch20.CrimePagerActivity"
+	            		  android:label="@string/app_name">
+            		<meta-data android:name="android.support.PARENT_ACTIVITY"
+                    	   android:value="com.jarp.tutorials.bigranchprohects.ch20.CrimeListActivity"/>
+            </activity>
+            
+        <activity android:name="com.jarp.tutorials.bigranchprohects.ch20.SingleFragmentActivity"
+	            		  android:label="@string/app_name">
+            		<meta-data android:name="android.support.PARENT_ACTIVITY"
+                    	   android:value="com.jarp.tutorials.bigranchprohects.ch20.CrimeListActivity"/>
+            </activity>
+        
+        
+        
+        
         <activity
 	            android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimeListActivity"
 	            android:label="@string/app_name" >
@@ -38,12 +66,21 @@
 	            android:screenOrientation="landscape"
 	            android:label="@string/app_name" >
         </activity>
+        
+        <activity android:name="com.jarp.tutorials.bigranchprohects.ch19.SingleFragmentActivity"
+	            		  android:label="@string/app_name">
+            		<meta-data android:name="android.support.PARENT_ACTIVITY"
+                    	   android:value="com.jarp.tutorials.bigranchprohects.ch19.CrimeListActivity"/>
+            </activity>
             
         <activity android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimePagerActivity"
 	            		  android:label="@string/app_name">
             		<meta-data android:name="android.support.PARENT_ACTIVITY"
                     	   android:value="com.jarp.tutorials.bigranchprohects.ch19.CrimeListActivity"/>
             </activity>
+            
+        
+        
         
         
         <activity
@@ -166,6 +203,7 @@
             
         <activity
             android:name="com.jarp.tutorials.bigranchprohects.ch8.CrimeActivity"
+            android:exported="true"
             android:label="@string/app_name" >
             
             </activity>

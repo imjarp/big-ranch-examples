@@ -34,6 +34,7 @@
             
         <activity
 	            android:name="com.jarp.tutorials.bigranchprohects.ch19.CrimeCameraActivity"
+	            android:exported="true"
 	            android:screenOrientation="landscape"
 	            android:label="@string/app_name" >
         </activity>
